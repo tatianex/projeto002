@@ -1,5 +1,8 @@
 package com.proway.projeto002.model
 
+import androidx.room.Entity
+
+@Entity
 data class Repos(
 
     val id: Int,
