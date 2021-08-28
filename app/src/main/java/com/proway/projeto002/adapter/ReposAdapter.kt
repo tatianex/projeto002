@@ -40,5 +40,4 @@ class ReposViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             text = value
         }
     }
-
 }

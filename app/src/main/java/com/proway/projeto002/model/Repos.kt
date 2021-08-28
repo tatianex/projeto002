@@ -1,15 +1,27 @@
 package com.proway.projeto002.model
 
-import androidx.room.Entity
+import com.google.gson.annotations.SerializedName
 
-@Entity
+data class ReposResponse(val items: List<Repos>)
+
 data class Repos(
 
+    @SerializedName("id")
     val id: Int,
+
+    @SerializedName("name")
     val name: String,
+
+    @SerializedName("description")
     val description: String,
-    val forks_count: Int,
-    val stargazers_count: Int,
+
+    @SerializedName("forks_count")
+    val forks: Int,
+
+    @SerializedName("stargazers_count")
+    val stars: Int,
+
+    @SerializedName("owner")
     val owner: Owner
 
 )

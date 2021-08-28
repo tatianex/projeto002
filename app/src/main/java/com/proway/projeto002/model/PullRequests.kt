@@ -1,12 +1,18 @@
 package com.proway.projeto002.model
 
-import androidx.room.Entity
+import com.google.gson.annotations.SerializedName
 
-@Entity
 data class PullRequests(
 
-    val name: String,
-    val created_at: String,
-    val html_url: String,
+    @SerializedName("title")
+    val title: String,
+
+    @SerializedName("created_at")
+    val dataOfCreation: String,
+
+    @SerializedName("body")
+    val description: String,
+
+    @SerializedName("user")
     val user: User
 )

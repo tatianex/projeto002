@@ -1,10 +1,12 @@
 package com.proway.projeto002.model
 
-import androidx.room.Entity
+import com.google.gson.annotations.SerializedName
 
-@Entity
 data class Owner(
 
+    @SerializedName("login")
     val name: String,
-    val avatar_url: String
+
+    @SerializedName("avatar_url")
+    val avatar: String
 )
