@@ -10,4 +10,4 @@ data class User (
 
     @SerializedName("avatar_url")
     val avatar: String
-) : Serializable
+)

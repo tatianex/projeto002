@@ -2,13 +2,14 @@ package com.proway.projeto002.repository
 
 import com.proway.projeto002.model.ReposResponse
 import com.proway.projeto002.endpoint.RetrofitBuilder
+import com.proway.projeto002.model.PullRequests
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ReposRepository() {
 
-    val service = RetrofitBuilder.GetRepoService()
+    private val service = RetrofitBuilder.getRepoService()
 
     fun fetchAll(onComplete: (ReposResponse?, String?) -> Unit) {
 
@@ -30,4 +31,22 @@ class ReposRepository() {
         })
     }
 
+    fun fetchAll(url: String, onClomplete: (List<PullRequests>?, String?) -> Unit){
+
+        val call = service.getPullRequest(url)
+        call.enqueue(object : Callback<List<PullRequests>> {
+            override fun onResponse( call: Call<List<PullRequests>>, response: Response<List<PullRequests>>) {
+                if (response.body() != null) {
+                    onClomplete(response.body(), null)
+                }
+                else {
+                    onClomplete(null, "Nenhum pull request encontrado!")
+                }
+            }
+
+            override fun onFailure(call: Call<List<PullRequests>>, t: Throwable) {
+                onClomplete(null, t.message)
+            }
+        })
+    }
 }

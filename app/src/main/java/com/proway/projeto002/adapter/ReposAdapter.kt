@@ -1,17 +1,13 @@
 package com.proway.projeto002.adapter
 
 import android.view.LayoutInflater
-import android.view.RoundedCorner
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.proway.projeto002.R
-import com.proway.projeto002.databinding.ItemReposBinding
-import com.proway.projeto002.databinding.TagForkStarLayoutBinding
+import com.proway.projeto002.databinding.RepoItemBinding
 import com.proway.projeto002.model.Repos
 
 class ReposAdapter(val onItemClick: (Repos) -> Unit) : RecyclerView.Adapter<ReposViewHolder>() {
@@ -19,7 +15,7 @@ class ReposAdapter(val onItemClick: (Repos) -> Unit) : RecyclerView.Adapter<Repo
     private val listOfRepos: MutableList<Repos> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReposViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_repos, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.repo_item, parent, false)
         return ReposViewHolder(view)
     }
 
@@ -41,7 +37,7 @@ class ReposAdapter(val onItemClick: (Repos) -> Unit) : RecyclerView.Adapter<Repo
 
 class ReposViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private var binding: ItemReposBinding = ItemReposBinding.bind(itemView)
+    private var binding: RepoItemBinding = RepoItemBinding.bind(itemView)
 
     fun bind(repos : Repos) {
         binding.reposNameTextView.text = repos.name

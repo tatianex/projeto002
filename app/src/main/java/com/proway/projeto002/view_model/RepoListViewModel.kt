@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.proway.projeto002.model.Repos
 import com.proway.projeto002.repository.ReposRepository
 
-class MainViewModel : ViewModel() {
+class RepoListViewModel : ViewModel() {
 
     private val repository = ReposRepository()
 

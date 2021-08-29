@@ -10,7 +10,7 @@ import com.proway.projeto002.R
 import com.proway.projeto002.adapter.ReposAdapter
 import com.proway.projeto002.databinding.RepoListFragmentBinding
 import com.proway.projeto002.model.Repos
-import com.proway.projeto002.view_model.MainViewModel
+import com.proway.projeto002.view_model.RepoListViewModel
 
 class RepoListFragment : Fragment(R.layout.repo_list_fragment) {
 
@@ -18,7 +18,7 @@ class RepoListFragment : Fragment(R.layout.repo_list_fragment) {
         fun newInstance() = RepoListFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: RepoListViewModel
     private lateinit var binding: RepoListFragmentBinding
     private val adapter = ReposAdapter{ repo ->
         val bundle = Bundle()
@@ -33,7 +33,7 @@ class RepoListFragment : Fragment(R.layout.repo_list_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = RepoListFragmentBinding.bind(view)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RepoListViewModel::class.java)
 
         binding.reposRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.reposRecyclerView.adapter = adapter

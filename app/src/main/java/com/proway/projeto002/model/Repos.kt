@@ -3,8 +3,6 @@ package com.proway.projeto002.model
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class ReposResponse(val items: List<Repos>)
-
 data class Repos(
 
     @SerializedName("id")
@@ -26,3 +24,8 @@ data class Repos(
     val user: User
 
 ) : Serializable
+
+data class ReposResponse(
+    @SerializedName("items")
+    val items: List<Repos>
+)
