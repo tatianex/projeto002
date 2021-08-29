@@ -10,19 +10,19 @@ class MainViewModel : ViewModel() {
 
     private val repository = ReposRepository()
 
-    private val _REPO = MutableLiveData<List<Repos>>()
-    val repo: LiveData<List<Repos>> = _REPO
+    private val _repo = MutableLiveData<List<Repos>>()
+    val repo: LiveData<List<Repos>> = _repo
 
-    private val _ERROR = MutableLiveData<String>()
-    val error: LiveData<String> = _ERROR
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> = _error
 
     fun getAllRepo() {
-        repository.fetchAll(){response, error ->
+        repository.fetchAll() { response, error ->
             response?.let {
-                _REPO.value = it.items
+                _repo.value = it.items
             }
             error?.let{
-                _ERROR.value = it
+                _error.value = it
             }
         }
     }

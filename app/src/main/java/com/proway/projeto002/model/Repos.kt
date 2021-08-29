@@ -1,6 +1,7 @@
 package com.proway.projeto002.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ReposResponse(val items: List<Repos>)
 
@@ -22,6 +23,6 @@ data class Repos(
     val stars: Int,
 
     @SerializedName("owner")
-    val owner: Owner
+    val user: User
 
-)
+) : Serializable

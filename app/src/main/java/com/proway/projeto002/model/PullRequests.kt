@@ -1,6 +1,7 @@
 package com.proway.projeto002.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PullRequests(
 
@@ -14,5 +15,8 @@ data class PullRequests(
     val description: String,
 
     @SerializedName("user")
-    val user: User
-)
+    val user: User,
+
+    @SerializedName("html_url")
+    val htmlUrl: String
+): Serializable

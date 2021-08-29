@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
@@ -14,8 +14,11 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
 
@@ -27,22 +30,23 @@
                     android:id="@+id/reposNameTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_margin="16dp"
                     android:fontFamily="sans-serif"
                     android:gravity="left"
                     android:text="Repository Name"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/userAvatarImageView"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/reposDescriptionTextView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/reposDescriptionTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:gravity="left"
                     android:text="Description"
                     android:textColor="@color/black"
@@ -50,15 +54,17 @@
                     android:fontFamily="sans-serif"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/userAvatarImageView"
-                    app:layout_constraintTop_toBottomOf="@+id/reposNameTextView"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@+id/reposNameTextView" />
 
                 <ImageView
                     android:id="@+id/userAvatarImageView"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_launcher_background"
+                    android:scaleType="centerInside"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_baseline_person_24"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -75,6 +81,15 @@
                     android:fontFamily="sans-serif"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/userAvatarImageView"/>
+
+                <include
+                    android:id="@+id/tagContainer"
+                    layout="@layout/tag_fork_star_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/reposDescriptionTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/reposDescriptionTextView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
