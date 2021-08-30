@@ -24,7 +24,7 @@ class RepoListFragment : Fragment(R.layout.repo_list_fragment) {
         val bundle = Bundle()
         bundle.putSerializable("repo", repo)
 
-        val fragment = PullRequestFragment.newInstance()
+        val fragment = PullRequestFragment.newInstance(repo.name, repo.user.name)
         fragment.arguments = bundle
 
         requireActivity().supportFragmentManager
