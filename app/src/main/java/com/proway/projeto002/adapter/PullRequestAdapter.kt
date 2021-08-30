@@ -22,7 +22,9 @@ class PullRequestAdapter(val onItemClick: (PullRequests) -> Unit ): RecyclerView
     override fun onBindViewHolder(holder: PullRequestViewHolder, position: Int) {
         pullRequestList[position].apply {
             holder.bind(this)
-            onItemClick(pullRequestList[position])
+            holder.itemView.setOnClickListener {
+                onItemClick(this)
+            }
         }
     }
 
@@ -37,7 +39,7 @@ class PullRequestAdapter(val onItemClick: (PullRequests) -> Unit ): RecyclerView
 
 class PullRequestViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    private val binding = PullRequestItemLayoutBinding.bind(view)
+    private val binding: PullRequestItemLayoutBinding = PullRequestItemLayoutBinding.bind(view)
 
     fun bind(pullRequests: PullRequests) {
         binding.titlePullRequestTextView.text = pullRequests.title

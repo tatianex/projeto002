@@ -11,7 +11,7 @@ class ReposRepository() {
 
     private val service = RetrofitBuilder.getRepoService()
 
-    fun fetchAll(onComplete: (ReposResponse?, String?) -> Unit) {
+    fun fetchAllRepositories(onComplete: (ReposResponse?, String?) -> Unit) {
 
         val call = service.getAllRepo()
         call.enqueue(object : Callback<ReposResponse> {
@@ -31,7 +31,7 @@ class ReposRepository() {
         })
     }
 
-    fun fetchAll(owner: String, repo: String, onClomplete: (List<PullRequests>?, String?) -> Unit){
+    fun fetchAllPullRequests(owner: String, repo: String, onClomplete: (List<PullRequests>?, String?) -> Unit){
 
         val call = service.getPullRequest(owner, repo)
         call.enqueue(object : Callback<List<PullRequests>> {

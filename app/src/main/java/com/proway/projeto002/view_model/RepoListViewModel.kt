@@ -17,7 +17,7 @@ class RepoListViewModel : ViewModel() {
     val error: LiveData<String> = _error
 
     fun getAllRepo() {
-        repository.fetchAll() { response, error ->
+        repository.fetchAllRepositories() { response, error ->
             response?.let {
                 _repo.value = it.items
             }

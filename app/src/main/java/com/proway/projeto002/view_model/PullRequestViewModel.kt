@@ -17,7 +17,7 @@ class PullRequestViewModel : ViewModel() {
     val error: LiveData<String> = _error
 
     fun fetchAll(owner: String, repo: String) {
-        repository.fetchAll(owner, repo) { response, error ->
+        repository.fetchAllPullRequests(owner, repo) { response, error ->
             response?.apply {
                 _pullRequest.value = this
             }
