@@ -1,5 +1,7 @@
 package com.proway.projeto002.view
 
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -29,8 +31,10 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
 
     private lateinit var viewModel: PullRequestViewModel
     private lateinit var binding: PullRequestFragmentBinding
-    private val adapter = PullRequestAdapter{}
-//    private lateinit var gambs: String?
+    private val adapter = PullRequestAdapter{
+        val browser = Intent(Intent.ACTION_VIEW, Uri.parse(it.htmlUrl))
+        startActivity(browser)
+    }
 
     private val observerPullRequest = Observer<List<PullRequests>> {
         adapter.refresh(it)
