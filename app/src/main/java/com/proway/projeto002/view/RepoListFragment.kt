@@ -23,6 +23,16 @@ class RepoListFragment : Fragment(R.layout.repo_list_fragment) {
     private val adapter = ReposAdapter{ repo ->
         val bundle = Bundle()
         bundle.putSerializable("repo", repo)
+
+        val fragment = PullRequestFragment.newInstance()
+        fragment.arguments = bundle
+
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .hide(this)
+            .add(R.id.container, fragment)
+            .addToBackStack("repos")
+            .commit()
     }
 
     private val observerRepos = Observer<List<Repos>> {

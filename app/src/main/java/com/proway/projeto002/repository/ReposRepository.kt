@@ -31,9 +31,9 @@ class ReposRepository() {
         })
     }
 
-    fun fetchAll(url: String, onClomplete: (List<PullRequests>?, String?) -> Unit){
+    fun fetchAll(owner: String, repo: String, onClomplete: (List<PullRequests>?, String?) -> Unit){
 
-        val call = service.getPullRequest(url)
+        val call = service.getPullRequest(owner, repo)
         call.enqueue(object : Callback<List<PullRequests>> {
             override fun onResponse( call: Call<List<PullRequests>>, response: Response<List<PullRequests>>) {
                 if (response.body() != null) {
@@ -49,4 +49,5 @@ class ReposRepository() {
             }
         })
     }
+
 }

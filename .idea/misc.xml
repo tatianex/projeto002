@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/pull_request_fragment.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/pull_request_item_layout.xml" value="0.5561403508771929" />
+        <entry key="app/src/main/res/layout/repo_item.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/repo_list_fragment.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/tag_fork_star_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/tag_forks.xml" value="0.23385416666666667" />
