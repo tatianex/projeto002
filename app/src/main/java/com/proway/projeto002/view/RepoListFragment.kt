@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.proway.projeto002.R
 import com.proway.projeto002.adapter.ReposAdapter
 import com.proway.projeto002.databinding.RepoListFragmentBinding
@@ -38,6 +39,9 @@ class RepoListFragment : Fragment(R.layout.repo_list_fragment) {
     private val observerRepos = Observer<List<Repos>> {
         adapter.refresh(it)
     }
+    private val observerError = Observer<String> {
+        Snackbar.make(requireView(), it, Snackbar.LENGTH_LONG).show()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,6 +53,8 @@ class RepoListFragment : Fragment(R.layout.repo_list_fragment) {
         binding.reposRecyclerView.adapter = adapter
 
         viewModel.repo.observe(viewLifecycleOwner, observerRepos)
+        viewModel.error.observe(viewLifecycleOwner, observerError)
+
         viewModel.getAllRepo()
     }
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.proway.projeto002.R
 import com.proway.projeto002.adapter.PullRequestAdapter
 import com.proway.projeto002.databinding.PullRequestFragmentBinding
@@ -40,6 +41,10 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
         adapter.refresh(it)
     }
 
+    private val observerError = Observer<String> {
+        Snackbar.make(requireView(), it, Snackbar.LENGTH_LONG).show()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,6 +58,7 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
         binding.pullRequestRecyclerView.adapter = adapter
 
         viewModel.pullRequest.observe(viewLifecycleOwner, observerPullRequest)
+        viewModel.error.observe(viewLifecycleOwner, observerError)
 
         binding.backButton.apply {
             setOnClickListener {
@@ -61,7 +67,6 @@ class PullRequestFragment : Fragment(R.layout.pull_request_fragment) {
                     .commitNow()
             }
         }
-
 
         if (repo != null) {
             viewModel.fetchAll(repo.user.name, repo.name)
